@@ -1,4 +1,4 @@
-const Card = ({ id, name, phone, email, address, onDelete }) => {
+const Card = ({ id, name, phone, email, address, onDelete, onEdit }) => {
     return (
         <div className="d-flex justify-content-center">
             <div className="card mb-3" style={{ maxWidth: "540px" }}>
@@ -11,7 +11,7 @@ const Card = ({ id, name, phone, email, address, onDelete }) => {
                             <div className="d-flex justify-content-between">
                                 <h5 className="card-title">{name}</h5>
                                 <div className="div">
-                                    <button className="btn btn-outline-info mx-1"><i className="fa fa-pen"></i></button>
+                                    <button className="btn btn-outline-info mx-1" onClick={()=>onEdit()} data-bs-toggle="modal" data-bs-target="#exampleModalEdit"><i className="fa fa-pen"></i></button>
                                     <button className="btn btn-outline-danger mx-1" onClick={()=>onDelete()} data-bs-toggle="modal" data-bs-target="#exampleModal"><i className="fa fa-trash"></i></button>
                                 </div>
                             </div>

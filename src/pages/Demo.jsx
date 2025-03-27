@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import useGlobalReducer from "../hooks/useGlobalReducer";  // Custom hook for accessing the global state.
 import { useState } from "react";
 import { crearContactos } from "../store";
+import { useNavigate } from "react-router-dom";
 
 export const Demo = () => {
   // Access the global state and dispatch function using the useGlobalReducer hook.
   const { store, dispatch } = useGlobalReducer()
+  const navigate = useNavigate()
   const [name, setName] = useState("")
   const [address, setAddress] = useState("")
   const [phone, setPhone] = useState("")
@@ -23,6 +25,12 @@ export const Demo = () => {
     }
     let resp = await crearContactos(nuevoContacto, dispatch)
     console.log (resp)
+    if(resp){
+      alert("Contacto creado exitosamente") 
+      navigate("/")
+    } else{
+      alert("Algo salió mal")
+    }
   }
 
   return (

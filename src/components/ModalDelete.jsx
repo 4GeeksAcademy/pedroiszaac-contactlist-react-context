@@ -1,4 +1,8 @@
+import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
+import { borrarContacto } from "../store.js";
+
 const ModalDelete = ({id, name}) => {
+    const { store, dispatch } = useGlobalReducer()
     return (
         <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog">
@@ -12,7 +16,7 @@ const ModalDelete = ({id, name}) => {
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Borrar contacto</button>
+                        <button type="button" className="btn btn-danger" onClick={()=>borrarContacto(id, dispatch)} data-bs-dismiss="modal">Borrar contacto</button>
                     </div>
                 </div>
             </div>

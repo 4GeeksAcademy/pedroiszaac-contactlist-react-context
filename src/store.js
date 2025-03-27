@@ -98,3 +98,48 @@ export const crearAgenda = async () => {
 
   }
 };
+
+export const borrarContacto = async (id, dispatch) => {
+  try {
+    const response = await fetch("https://playground.4geeks.com/contact/agendas/pedroiszaac/contacts/" + id, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" }
+    });
+
+    if (!response.ok) {
+      throw new Error("Ocurrió un error al borrar el contacto");
+
+    } else {
+      obtenerContactos(dispatch)
+    }
+
+  } catch (error) {
+
+    console.log(error)
+
+  }
+};
+
+export const modificarContactos = async (nuevoContacto, dispatch, id) => {
+  try {
+    const response = await fetch("https://playground.4geeks.com/contact/agendas/pedroiszaac/contacts/" + id, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(nuevoContacto)
+    });
+
+    if (!response.ok) {
+      throw new Error("Ocurrió un error al crear el contacto");
+      return false
+      
+    } else {
+      obtenerContactos(dispatch)
+      return true
+    }
+
+  } catch (error) {
+
+    console.log(error)
+
+  }
+};
